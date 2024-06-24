@@ -1,8 +1,27 @@
+"use client"
 import React from 'react'
+import JobCase from "../images/jobCase.svg"
+import links from "@/utils/links"
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from "./ui/button"
+import { usePathname } from 'next/navigation'
+import { link } from 'fs'
 
 const Sidebar = () => {
+    const pathname = usePathname()
   return (
-    <h2 className='text-4xl'>Sidebar</h2>
+    <aside className='py-4 px-8 bg-muted h-full'>
+        < Image src={JobCase} alt={"logo"} className={"mx-auto"} />
+        <div className='flex flex-col items mt-20 gap-y-4'>
+            {links.map((link) => {
+                return <Button asChild key={link.href} variant={pathname === link.href? 'default': 'link'}>
+                    <Link href={link.href} className='flex items-center gap-x-2'>
+                    {link.icon}<span className='capitalize'>{link.label}</span></Link>
+                </Button>
+})}
+        </div>
+    </aside>
   )
 }
 
