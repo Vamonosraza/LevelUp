@@ -29,7 +29,7 @@ const LinksDropdown = () => {
         </DropdownMenuContent>
     </DropdownMenu>
 
-  )
+    )
 }
 
 export default LinksDropdown
