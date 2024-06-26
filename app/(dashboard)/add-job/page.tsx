@@ -1,8 +1,10 @@
 import React from 'react'
+import CreateJobForm from '@/components/CreateJobForm'
 
-const AddJobPage = () => {
-  return (
-    <h1 className='4xl'>AddJobPage</h1>
+function AddJobPage()  {
+  return (<>
+    <CreateJobForm />
+    </>
   )
 }
 
