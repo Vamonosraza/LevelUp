@@ -1,3 +1,5 @@
+'use server'
+
 import prisma from "./db";
 import { auth } from "@clerk/nextjs/server";
 import { JobType, CreateAndEditJobType, createAndEditJobSchema } from "./types";
@@ -9,7 +11,7 @@ import { resolve } from "path";
 function authenicated(){
     const {userId} = auth();
     if(!userId){
-        redirect('/sign-in');
+        redirect('/');
     }
     return userId;
 }
@@ -24,8 +26,6 @@ export async function createJobAction(values:CreateAndEditJobType):Promise<JobTy
             data:{
                 ...values,
                 clerkId: userId,
-                createdAt: daujs().toDate(),
-                updatedAt: daujs().toDate(),
             }
         });
         return job;

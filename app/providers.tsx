@@ -8,18 +8,17 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Toaster } from '@/components/ui/toaster'
 
 const Providers = ({children}: {children: React.ReactNode}) => {
-  const [queryClient] = useState(() => {
-    return new QueryClient({
+  const [queryClient] = useState(() => 
+    new QueryClient({
       defaultOptions:{
         queries:{
-          staleTime: 1000 * 60 * 5
+          staleTime: 3000 * 60 * 5
         }
       }
     })
   
-  })
+  );
   return (
-    <>
         <ThemeProvider
             attribute='class'
             defaultTheme='system'
@@ -33,8 +32,7 @@ const Providers = ({children}: {children: React.ReactNode}) => {
             <ReactQueryDevtools initialIsOpen={false}/>
           </QueryClientProvider>
         </ThemeProvider>
-    </>
-  )
-}
+  );
+};
 
 export default Providers
