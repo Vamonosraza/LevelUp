@@ -1,8 +1,11 @@
 import React from 'react'
 
-const JobInfo = () => {
+function JobInfo ({icon, text}:{icon:React.ReactNode, text:string}) {
   return (
-    <div>JobInfo</div>
+    <div className='flex gap-x-2 items-center'>
+      {icon}
+      {text}
+    </div>
   )
 }
 
