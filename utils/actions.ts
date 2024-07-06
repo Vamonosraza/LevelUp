@@ -208,6 +208,7 @@ Array<{date:string;count:number}>
                 createdAt:'asc'
             }
         })
+        console.log(jobs)
 
         let applicationsPerMonth = jobs.reduce((acc, job)=>{
             const date = daujs(job.createdAt).format('MMM YYYY');
