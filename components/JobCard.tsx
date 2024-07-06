@@ -33,7 +33,7 @@ function JobCard  ({job}:{job:JobType}) {
           View
         </Link>
       </Button>
-      <DeleteJobBtn/>
+      <DeleteJobBtn id={job.id}/>
       </CardFooter>
     </Card>
   )

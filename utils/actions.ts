@@ -98,3 +98,24 @@ export async function getAllJobsAction(
         };
     }
 }
+
+export async function deleteJobAction(id:string): Promise<JobType | null>{
+    let job:JobType | null = null;
+    const userId = authenicated();
+
+    try{
+        const job: JobType = await prisma.job.delete({
+            where:{
+                    id,
+                    clerkId:userId
+            }
+        })
+        return job;
+    }catch(error){
+        job = null
+    }
+    if (!job){
+        redirect('/jobs')
+    }
+    return job;
+}
