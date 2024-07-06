@@ -7,6 +7,8 @@ import { redirect } from "next/navigation";
 import { Prisma } from "@prisma/client";
 import daujs from "dayjs";
 import { resolve } from "path";
+import { date } from "zod";
+import { count } from "console";
 
 function authenicated(){
     const {userId} = auth();
@@ -185,6 +187,41 @@ export async function getStatAction(): Promise<{pending:number, interview:number
         return defaultStats;
     }catch(error){
         console.error(error);
+        redirect('/jobs');
+    }
+}
+
+export async function getChartsDataAction(): Promise<
+Array<{date:string;count:number}>
+>{
+    const userId = authenicated();
+    const sixMonthsAgo = daujs().subtract(6, 'month').toDate();
+    try{
+        const jobs = await prisma.job.findMany({
+            where:{
+                clerkId:userId,
+                createdAt:{
+                    gte:sixMonthsAgo
+                }
+            },
+            orderBy:{
+                createdAt:'asc'
+            }
+        })
+
+        let applicationsPerMonth = jobs.reduce((acc, job)=>{
+            const date = daujs(job.createdAt).format('MMM YYYY');
+            const existingEntry = acc.find((entry) => entry.date === date);
+
+            if(existingEntry){
+                existingEntry.count +=1;
+            }else{
+                acc.push({date, count:1});
+            }
+            return acc;
+        }, [] as Array<{date:string;count:number}>);
+        return applicationsPerMonth;
+    }catch(error){
         redirect('/jobs');
     }
 }
