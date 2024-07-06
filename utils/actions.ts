@@ -10,6 +10,8 @@ import { resolve } from "path";
 
 function authenicated(){
     const {userId} = auth();
+    console.log('userId', userId);
+    // user_2i9FW8RaLM9CKfbUsnSucpiHBg4
     if(!userId){
         redirect('/');
     }

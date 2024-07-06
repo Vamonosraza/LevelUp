@@ -29,6 +29,9 @@ yarn-error.log*
 .env*.local
 .env*
 
+# mock-data user-id
+seed.js
+
 # vercel
 .vercel
 
