@@ -13,7 +13,7 @@ type ButtonContainerProps = {
     };
 
     import { Button } from './ui/button';
-    
+
     function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -48,11 +48,11 @@ type ButtonContainerProps = {
 
     const renderPageButtons = () => {
         const pageButtons = [];
-        // first page
+
         pageButtons.push(
         addPageButton({ page: 1, activeClass: currentPage === 1 })
         );
-        // dots
+
 
         if (currentPage > 3) {
         pageButtons.push(
@@ -61,7 +61,7 @@ type ButtonContainerProps = {
             </Button>
         );
         }
-        // one before current page
+
         if (currentPage !== 1 && currentPage !== 2) {
         pageButtons.push(
             addPageButton({
@@ -70,7 +70,7 @@ type ButtonContainerProps = {
             })
         );
         }
-        // current page
+
         if (currentPage !== 1 && currentPage !== totalPages) {
         pageButtons.push(
             addPageButton({
@@ -79,7 +79,6 @@ type ButtonContainerProps = {
             })
         );
         }
-        // one after current page
 
         if (currentPage !== totalPages && currentPage !== totalPages - 1) {
         pageButtons.push(
@@ -107,7 +106,6 @@ type ButtonContainerProps = {
 
     return (
         <div className='flex  gap-x-2'>
-        {/* prev */}
         <Button
             className='flex items-center gap-x-2 '
             variant='outline'
@@ -121,7 +119,6 @@ type ButtonContainerProps = {
             prev
         </Button>
         {renderPageButtons()}
-        {/* next */}
         <Button
             className='flex items-center gap-x-2 '
             onClick={() => {

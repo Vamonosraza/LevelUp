@@ -16,7 +16,7 @@ export default function Home() {
                     Job <span className={"text-primary"}>tracking</span> app
                 </h1>
                 <p className="leading-loose max-w-md mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolorum, explicabo iusto libero minima molestiae odio optio provident qui, ratione suscipit veniam. Eos fugiat illo libero nobis unde voluptate.
+                    Welcome to the job tracking app LevelUp! Keep track of your job applications and never miss an opportunity. Good luck on your job search!
                 </p>
                 <Button asChild className={"mt-4"}>
                     <Link href={'/add-job'}>

@@ -169,7 +169,7 @@ export async function updateJobAction(id:string, values:CreateAndEditJobType): P
 }
 
 export async function getStatAction(): Promise<{pending:number, interview:number, decline:number}>{
-    await new Promise((resolve)=>setTimeout(resolve, 4000));
+    await new Promise((resolve)=>setTimeout(resolve, 1000));
     const userId = authenicated();
     try{
         const stats = await prisma.job.groupBy({
