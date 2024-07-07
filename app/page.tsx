@@ -13,7 +13,7 @@ export default function Home() {
         <section className="max-w-6xl mx-auto px-4 sm:px-8 h-screen -mt-20 grid lg:grid-cols-[1fr,400px] items-center">
             <div>
                 <h1 className="capitalize text-4xl font-bold text-gray-900 mid:text-7xl">
-                    Job <span className={"text-primary"}>tracking</span> app
+                    <span className={"text-primary"}>Job tracking app</span> 
                 </h1>
                 <p className="leading-loose max-w-md mt-4">
                     Welcome to the job tracking app LevelUp! Keep track of your job applications and never miss an opportunity. Good luck on your job search!
