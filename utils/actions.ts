@@ -47,7 +47,7 @@ type GetAllJobsActionType = {
 };
 
 export async function getAllJobsAction(
-    {search, jobStatus, page = 1, limit = 10}:GetAllJobsActionType
+    {search, jobStatus, page = 1, limit = 20}:GetAllJobsActionType
 ):Promise<{
     jobs:JobType[];count:number;page:number;totalPages:number;
 }>{
@@ -85,13 +85,21 @@ export async function getAllJobsAction(
             };
         }
 
+        const skip = (page - 1) * limit;
         const jobs:JobType[]= await prisma.job.findMany({
             where:whereClause,
+            skip,
+            take:limit,
             orderBy:{
                 createdAt:'desc'
             },
             });
-            return {jobs, count:0, page:1, totalPages:0};
+
+            const count:number = await prisma.job.count({
+                where:whereClause
+            });
+            const totalPages = Math.ceil(count / limit);
+            return {jobs, count, page, totalPages};
     }catch(error){
         console.error(error);
         return {
