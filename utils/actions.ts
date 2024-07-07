@@ -172,8 +172,7 @@ export async function getStatAction(): Promise<{pending:number, interview:number
             _count:{
                 status:true
             }
-        })
-        console.log('stats', stats);
+        });
         const statObject = stats.reduce((acc, curr)=>{
             acc[curr.status] = curr._count.status;
             return acc;

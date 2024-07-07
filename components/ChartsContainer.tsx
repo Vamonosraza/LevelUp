@@ -1,7 +1,8 @@
+'use client'
 import React from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { useQuery } from '@tanstack/react-query'
-import { getChartsDataAction } from '@/utils/actions'
+import { getChartsDataAction, getStatAction } from '@/utils/actions'
 
 
 function ChartsContainer () {
@@ -9,9 +10,10 @@ function ChartsContainer () {
         queryKey:['charts'],
         queryFn:() => getChartsDataAction()
     })
+    console.log(data)
 
     if(isPending) return <h2 className='text-xl'>Loading...</h2>
-    if(!data || data.length <1) return null
+    if(!data || data.length <1) return <h2 className='text-xl'>No data</h2>
     return (
         <section className='mt-16'>
             <h1 className='text-4xl font-semibold text-center'>
