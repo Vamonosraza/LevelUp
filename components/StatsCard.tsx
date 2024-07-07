@@ -3,10 +3,10 @@ import { Skeleton } from './ui/skeleton'
 
 type StatsCardProps = {
     title: string;
-    value: string;
+    value: number;
 }
 
-export function StatsCard({title, value}: StatsCardProps) {
+function StatsCard({title, value}: StatsCardProps) {
     return (
         <Card className='bg-muted'>
             <CardHeader className='flex flex-row justify-between items-center'>
@@ -34,3 +34,5 @@ export function StatsLoadingCard(){
         </Card>
     )
 }
+
+export default StatsCard

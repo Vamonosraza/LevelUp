@@ -2,7 +2,7 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getStatAction } from '@/utils/actions'
-import { StatsCard } from './StatsCard'
+import  StatsCard, { StatsLoadingCard }  from './StatsCard'
 
 function StatsContainer () {
     const { data} = useQuery({
